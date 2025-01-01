@@ -81,8 +81,8 @@ const Footer = () => {
     // backgroundImage: '/assets/img/footer_bg.jpg',
     logo: '/assets/img/footer_logo.svg',
     contactText:
-      'Open Hours of Government: <br /> Mon - Fri: 8.00 am. - 6.00 pm.',
-    contactText2: '13/A, Miranda Halim City.',
+      '24/7 available',
+    contactText2: 'LB Nagar, Hyderabad.',
     contactText3: '099 695 695 35',
     facebookHref: '/',
     pinterestHref: '/',
@@ -103,8 +103,8 @@ const Footer = () => {
         links: [
           { href: '/', text: 'Home' },
           { href: '/about', text: 'About Us' },
-          { href: '/service', text: 'Contact Us' },
-          { href: '/contact', text: 'Team' },
+          { href: '/contact', text: 'Contact Us' },
+          { href: '/', text: 'Team' },
         ],
       },
     ],
@@ -122,7 +122,7 @@ const Footer = () => {
         title: 'The Medical Of This Working Health',
       },
     ],
-    copyrightText: 'Copyright © 2024 Medilo, All Rights Reserved.',
+    copyrightText: 'Copyright © 2024 Survey, All Rights Reserved.',
     footerMenu: [
       { href: '/about', text: 'About Us' },
       { href: '/', text: 'Events' },

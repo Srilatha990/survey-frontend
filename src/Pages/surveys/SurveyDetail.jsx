@@ -1,103 +1,67 @@
+
+
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const SurveyDetail = () => {
-  const { id } = useParams(); // Get the survey ID from the URL
-  const [questions, setQuestions] = useState([]);
-  const [answers, setAnswers] = useState({});
-  const [loading, setLoading] = useState(true);
+  const { category } = useParams(); // Get the category from the URL
+  const [surveys, setSurveys] = useState([]);
+  const navigate = useNavigate();
 
-  // Fetch survey questions by ID
+  // Fetch surveys by category
   useEffect(() => {
-    fetch(`https://survey-backend-henna.vercel.app/api/surveys/${id}`)
+    fetch(`https://survey-backend-henna.vercel.app/api/surveys/category/${category}`)
       .then((res) => res.json())
-      .then((data) => {
-        setQuestions(data.data.questions);
-        setLoading(false);
-      })
-      .catch((err) => console.error("Error fetching survey details:", err));
-  }, [id]);
+      .then((data) => setSurveys(data.data))
+      .catch((err) => console.error("Error fetching surveys:", err));
+  }, [category]);
 
-  const handleChange = (questionId, value) => {
-    setAnswers((prev) => ({ ...prev, [questionId]: value }));
+  // Handle survey card click to navigate to Survey Questions Page
+  const handleSurveyClick = (surveyId) => {
+    navigate(`/survey/${surveyId}`);
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Send the answers to the backend for validation
-    fetch(`http://localhost:5000/api/surveys/${id}/validate`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ answers }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.correct) {
-          alert("You are right!");
-        } else {
-          alert("You are wrong!");
-        }
-      })
-      .catch((err) => console.error("Error submitting answers:", err));
-  };
-
-  if (loading) {
-    return <p>Loading survey details...</p>;
-  }
 
   return (
     <div style={styles.container}>
-      <h2>Survey Questions</h2>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        {questions.map((question) => (
-          <div key={question._id} style={styles.questionBlock}>
-            <p>{question.questionText}</p>
-            <input
-              type="text"
-              placeholder="Your answer"
-              onChange={(e) => handleChange(question._id, e.target.value)}
-              style={styles.input}
-              required
-            />
+      <h3>Surveys in {category}</h3>
+      <div style={styles.surveyContainer}>
+        {surveys.map((survey) => (
+          <div
+            key={survey._id}
+            onClick={() => handleSurveyClick(survey._id)}
+            style={styles.surveyCard}
+          >
+            <h4>{survey.surveyTitle}</h4>
+            <p>Total Questions: {survey.noOfQuestions}</p>
           </div>
         ))}
-        <button type="submit" style={styles.submitButton}>
-          Submit Answers
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
 
-// Inline styles for UI
 const styles = {
   container: {
-    padding: "20px",
+    padding: "60px",
     fontFamily: "Arial, sans-serif",
-    marginTop:"100px"
+    marginTop: "100px",
   },
-  form: {
+  surveyContainer: {
     display: "flex",
-    flexDirection: "column",
+    flexWrap: "wrap",
     gap: "20px",
   },
-  questionBlock: {
-    display: "flex",
-    flexDirection: "column",
-    gap: "10px",
-  },
-  input: {
-    padding: "10px",
-    border: "1px solid #ccc",
-    borderRadius: "5px",
-  },
-  submitButton: {
-    padding: "10px 20px",
-    backgroundColor: "#007BFF",
-    color: "#fff",
-    border: "none",
-    borderRadius: "5px",
+  surveyCard: {
+    width: "300px",
+    height: "200px",
+    padding: "20px",
+    backgroundColor: "#f8f9fa",
     cursor: "pointer",
+    borderRadius: "10px",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+    transition: "transform 0.3s",
+    marginTop:"30px",
   },
 };
 

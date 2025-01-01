@@ -19,8 +19,9 @@ import ScrollUpButton from './Components/ScrollUpButton';
 import SignupForm from './Pages/RegisterPage/register';
 import LoginForm from './Pages/LoginPage/login';
 import VerifyOtp from './Pages/VerifyPage/otp';
-import Survey from './Pages/surveys/survey';
+import Survey from './Pages/surveys/survey'
 import SurveyDetail from './Pages/surveys/SurveyDetail';
+import SurveyQuestionsPage from './Pages/surveys/SurveyQuestions';
 import FAQPage from './Pages/faqpage/faq';
 
 import 'aos/dist/aos.css';
@@ -66,7 +67,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<ErrorPage />} />
           <Route path="/surveys" element={<Survey />} />
-          <Route path="/survey/:id" element={<SurveyDetail />} />
+          <Route path="/surveys/:category" element={<SurveyDetail/>}/>
+          <Route path="/survey/:id" element={<SurveyQuestionsPage />} />
           <Route path="/faq" element={<FAQPage/>}/>
         </Route>
       </Routes>

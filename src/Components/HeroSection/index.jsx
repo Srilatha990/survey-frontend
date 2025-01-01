@@ -63,7 +63,7 @@ const HeroSection = ({ data }) => {
                             __html: items.contactSubtitle,
                           }}
                         />
-                        <div className="cs_hero_info">
+                        {/* <div className="cs_hero_info">
                           <h3
                             dangerouslySetInnerHTML={{
                               __html: items.contactTitle,
@@ -72,7 +72,7 @@ const HeroSection = ({ data }) => {
                           <p
                             dangerouslySetInnerHTML={{ __html: items.contact }}
                           />
-                        </div>
+                        </div> */}
                         <div className="cs_hero_btns">
                           <Button
                             btnText={items.btnText1}

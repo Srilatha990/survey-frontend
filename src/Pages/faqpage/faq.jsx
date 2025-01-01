@@ -3,28 +3,28 @@ import React, { useState } from 'react';
 const FAQs = [
   {
     id: 1,
-    question: 'What is the design process for a new building?',
-    answer: 'Our design process typically begins with a consultation to discuss your needs and goals. From there, we create a custom design concept, which we then refine and develop into a final plan.',
+    question: 'What is the purpose of this survey?',
+    answer: 'The purpose of this survey is to gather valuable feedback from users like you. Your responses will help us improve our services and understand user needs better. Your participation is greatly appreciated.',
   },
   {
     id: 2,
-    question: 'How long does the design process take?',
-    answer: 'The length of the design process varies depending on the complexity of the project, but we typically allow 2-6 weeks for the initial design concept and 2-4 weeks for revisions and finalization.',
+    question: 'How long will it take to complete the survey?',
+    answer: 'The survey should take approximately [X minutes] to complete. The questions are designed to be quick and easy, and you can skip any questions you prefer not to answer.',
   },
   {
     id: 3,
-    question: 'What is the cost of your design services?',
-    answer: 'Our design fees vary depending on the scope and complexity of the project. We offer a free consultation to discuss your needs and provide a custom quote.',
+    question: 'Do I need to create an account to complete the survey?',
+    answer: ' No, you do not need to create an account to complete the survey. Simply click the link and start answering the questions. We value your time and aim to make the process as easy as possible.',
   },
   {
     id: 4,
-    question: 'Do you offer interior design services?',
-    answer: 'Yes, we offer a full range of interior design services, from space planning and furniture selection to color consultation and materials specification.',
+    question: 'Can I change my answers after submitting the survey?',
+    answer: 'Once you submit your answers, they cannot be changed. Please review your responses carefully before submitting. If you need to make corrections, feel free to contact our support team.',
   },
   {
     id: 5,
-    question: 'Can I make changes to the design once it is finalized?',
-    answer: 'Yes, we understand that changes can be necessary. We offer a revision process to accommodate any changes you may need to make.',
+    question: 'What happens after I submit my survey answers?',
+    answer: 'After you submit your answers, we will review the data and use it to improve our services. You may also receive a thank-you message or a follow-up email with further instructions or rewards, depending on the survey',
   },
 ];
 
