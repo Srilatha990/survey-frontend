@@ -23,6 +23,7 @@ import Survey from './Pages/surveys/survey'
 import SurveyDetail from './Pages/surveys/SurveyDetail';
 import SurveyQuestionsPage from './Pages/surveys/SurveyQuestions';
 import FAQPage from './Pages/faqpage/faq';
+import PremiumPage from './Pages/premiumpage/premium';
 
 import 'aos/dist/aos.css';
 import Aos from 'aos';
@@ -70,6 +71,7 @@ function App() {
           <Route path="/surveys/:category" element={<SurveyDetail/>}/>
           <Route path="/survey/:id" element={<SurveyQuestionsPage />} />
           <Route path="/faq" element={<FAQPage/>}/>
+          <Route path='/join' element={<PremiumPage/>}/>
         </Route>
       </Routes>
       <ScrollUpButton />

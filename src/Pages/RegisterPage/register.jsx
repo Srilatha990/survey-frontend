@@ -158,13 +158,13 @@ const SignupForm = () => {
             padding: "10px",
             fontSize: "16px",
             color: "#fff",
-            backgroundColor: "#26a69a",
+            backgroundColor: "#002261",
             border: "none",
             borderRadius: "4px",
             cursor: "pointer",
           }}
-          onMouseEnter={(e) => (e.target.style.backgroundColor = "#00796b")}
-          onMouseLeave={(e) => (e.target.style.backgroundColor = "#26a69a")}
+          onMouseEnter={(e) => (e.target.style.backgroundColor = "#002261")}
+          onMouseLeave={(e) => (e.target.style.backgroundColor = "#002261")}
         >
           Signup
         </button>
@@ -174,14 +174,14 @@ const SignupForm = () => {
         <button
           onClick={handleLoginRedirect}
           style={{
-            color: "#26a69a",
+            color: "#002261",
             background: "none",
             border: "none",
             cursor: "pointer",
             textDecoration: "underline",
           }}
-          onMouseEnter={(e) => (e.target.style.color = "#00796b")}
-          onMouseLeave={(e) => (e.target.style.color = "#26a69a")}
+          onMouseEnter={(e) => (e.target.style.color = "#002261")}
+          onMouseLeave={(e) => (e.target.style.color = "#002261")}
         >
           Login
         </button>
