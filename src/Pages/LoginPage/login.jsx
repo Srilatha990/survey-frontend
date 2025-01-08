@@ -1,12 +1,21 @@
+
+
+
+
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import eye icons
 
 const LoginForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
+
+  // State for password visibility toggle
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,12 +53,31 @@ const LoginForm = () => {
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "50px auto", textAlign: "center", border: "1px solid #ccc", borderRadius: "8px", padding: "20px", boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)" }}>
+    <div
+      style={{
+        maxWidth: "400px",
+        margin: "50px auto",
+        textAlign: "center",
+        border: "1px solid #ccc",
+        borderRadius: "8px",
+        padding: "20px",
+        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+      }}
+    >
       <ToastContainer />
       <h2 style={{ marginBottom: "20px" }}>Login</h2>
       <form onSubmit={handleSubmit}>
         <div style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", textAlign: "left" }}>Email</label>
+          <label
+            style={{
+              display: "block",
+              marginBottom: "5px",
+              fontSize: "14px",
+              textAlign: "left",
+            }}
+          >
+            Email
+          </label>
           <input
             type="email"
             name="email"
@@ -66,21 +94,44 @@ const LoginForm = () => {
           />
         </div>
         <div style={{ marginBottom: "15px" }}>
-          <label style={{ display: "block", marginBottom: "5px", fontSize: "14px", textAlign: "left" }}>Password</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
+          <label
             style={{
-              width: "100%",
-              padding: "10px",
+              display: "block",
+              marginBottom: "5px",
               fontSize: "14px",
-              borderRadius: "4px",
-              border: "1px solid #ccc",
+              textAlign: "left",
             }}
-          />
+          >
+            Password
+          </label>
+          <div style={{ position: "relative" }}>
+            <input
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+              style={{
+                width: "100%",
+                padding: "10px",
+                fontSize: "14px",
+                borderRadius: "4px",
+                border: "1px solid #ccc",
+              }}
+            />
+            <span
+              onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "10px",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+            </span>
+          </div>
         </div>
         <button
           type="submit"

@@ -1,213 +1,209 @@
-import SectionHeading from "../SectionHeading";
 
-const ContactSection = ({ data, reverseOrder }) => {
+
+
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  // Handle form field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Client-side validation
+    if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
+      toast.error('All fields are required.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('https://survey-backend-henna.vercel.app/api/contact/contact', formData);
+      if (response.status === 200) {
+        toast.success('Message sent successfully.');
+        setFormData({ fullName: '', email: '', subject: '', message: '' });
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
   return (
-    <>
-      <div className="container">
-        <div className="row cs_gap_y_30">
-          {reverseOrder ? (
-            <>
-              <div className="col-lg-6">
-                <div className="cs_contact_thumbnail cs_pl-40">
-                  {/* <div className="cs_teeth_shape">
-                    <img
-                      src={data.teethShapeImg}
-                      alt="Teeth Shape"
-                      className="cs_spinner_img"
-                    />
-                  </div> */}
-                  <div className="cs_contact_img">
-                    <img src={data.contactImg} alt="Contact" />
-                  </div>
-                  <div className="cs_contact_bg_shape">
-                    <div className="cs_white_bg_shape" />
-                    <div className={`cs_iconbox ${data.iconBox.style}`}>
-                      <div className="cs_iconbox_icon cs_center">
-                        <img src={data.iconBox.icon} alt="Icon" />
-                      </div>
-                      <div className="cs_iconbox_right">
-                        <h3 className="cs_iconbox_title">
-                          {data.iconBox.title}
-                        </h3>
-                        <p className="cs_iconbox_subtitle mb-0">
-                          {data.iconBox.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6">
-                <SectionHeading
-                  SectionSubtitle={data.sectionSubtitle}
-                  SectionTitle={data.SectionTitle}
-                />
+    <div style={{
+      display: 'flex',
+      flexDirection: window.innerWidth < 768 ? 'column' : 'row',  // Stack vertically for mobile
+      padding: '20px',
+      backgroundColor: '#f8f9fa',
+      minHeight: '500px',
+    }}>
+      {/* Form Section */}
+      <div style={{
+        backgroundColor: '#ffffff',
+        borderRadius: '15px',
+        padding: '20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '500px',
+        marginBottom: window.innerWidth < 768 ? '20px' : '0', // Margin for mobile
+        width: window.innerWidth < 768 ? '100%' : '50%', // 100% width on mobile, 50% on large screens
+      }}>
+        <h1 style={{
+          fontSize: '2rem',
+          fontWeight: '600',
+          color: '#002261',
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          marginBottom: '30px',
+        }}>
+          Send Us a Message
+        </h1>
 
-                <div className="cs_height_25 cs_height_lg_25" />
-                <form className="cs_contact_form row cs_gap_y_30">
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="email"
-                      className="cs_form_field"
-                      placeholder="Your email"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your Subject"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your phone"
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <textarea
-                      rows={5}
-                      className="cs_form_field"
-                      placeholder="Your comments"
-                      defaultValue={""}
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Type the below word"
-                    />
-                    <input
-                      type="button"
-                      className="cs_form_field cs_code_input"
-                      defaultValue="5RLOpW"
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <button
-                      type="submit"
-                      className="cs_btn cs_style_1 cs_color_1"
-                    >
-                      Send Request
-                    </button>
-                  </div>
-                </form>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="col-lg-6">
-                <SectionHeading
-                  SectionSubtitle={data.sectionSubtitle}
-                  SectionTitle={data.SectionTitle}
-                />
+        <form onSubmit={handleSubmit} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexGrow: 1,
+          justifyContent: 'space-between',
+        }}>
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="fullName" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
+          </div>
 
-                <div className="cs_height_25 cs_height_lg_25" />
-                <form className="cs_contact_form row cs_gap_y_30">
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your name"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="email"
-                      className="cs_form_field"
-                      placeholder="Your email"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your Subject"
-                    />
-                  </div>
-                  <div className="col-md-6">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Your phone"
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <textarea
-                      rows={5}
-                      className="cs_form_field"
-                      placeholder="Your comments"
-                      defaultValue={""}
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <input
-                      type="text"
-                      className="cs_form_field"
-                      placeholder="Type the below word"
-                    />
-                    <input
-                      type="button"
-                      className="cs_form_field cs_code_input"
-                      defaultValue="5RLOpW"
-                    />
-                  </div>
-                  <div className="col-lg-12">
-                    <button
-                      type="submit"
-                      className="cs_btn cs_style_1 cs_color_1"
-                    >
-                      Send Request
-                    </button>
-                  </div>
-                </form>
-              </div>
-              <div className="col-lg-6">
-                <div className="cs_contact_thumbnail cs_pl-40">
-                  {/* <div className="cs_teeth_shape">
-                    <img
-                      src={data.teethShapeImg}
-                      alt="Teeth Shape"
-                      className="cs_spinner_img"
-                    />
-                  </div> */}
-                  <div className="cs_contact_img">
-                    <img src={data.contactImg} alt="Contact" />
-                  </div>
-                  <div className="cs_contact_bg_shape">
-                    <div className="cs_white_bg_shape" />
-                    <div className={`cs_iconbox ${data.iconBox.style}`}>
-                      <div className="cs_iconbox_icon cs_center">
-                        <img src={data.iconBox.icon} alt="Icon" />
-                      </div>
-                      <div className="cs_iconbox_right">
-                        <h3 className="cs_iconbox_title">
-                          {data.iconBox.title}
-                        </h3>
-                        <p className="cs_iconbox_subtitle mb-0">
-                          {data.iconBox.subtitle}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="email" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="subject" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="message" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '90px',
+              }}
+              required
+            />
+          </div>
+
+          <button type="submit" style={{
+            width: '100%',
+            padding: '10px',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            color: 'white',
+            backgroundColor: '#2ea6f7',
+            border: 'none',
+            borderRadius: '8px',
+            transition: 'background-color 0.3s ease',
+            marginTop: '20px',
+            height: '45px',
+          }}>
+            Submit
+          </button>
+        </form>
       </div>
-    </>
+
+      {/* Right side image */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '500px',
+        width: window.innerWidth < 768 ? '100%' : '50%',  // 100% on mobile, 50% on large screens
+      }}>
+        <img src="/assets/img/cont.jpeg" alt="Contact Us" style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          objectFit: 'cover',
+        }} />
+      </div>
+
+      {/* Toast container for displaying toasts */}
+      <ToastContainer />
+    </div>
   );
 };
 
-export default ContactSection;
+export default Contact;
+
+

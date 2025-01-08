@@ -4,7 +4,7 @@ import Section from '../../Components/Section';
 import LocationMap from '../../Components/LocationMap/Index';
 
 const headingData = {
-  backgroundImage: 'assets/img/banner1.jpg',
+  backgroundImage: 'assets/img/bannerimage.jpg',
   title: 'Contact Us',
 };
 
@@ -30,7 +30,7 @@ const ContactPage = () => {
     <>
       <Section
         className={'cs_page_heading cs_bg_filed cs_center'}
-        backgroundImage="assets/img/banner1.jpg"
+        backgroundImage="assets/img/bannerimage.jpg"
       >
         <PageHeading data={headingData} />
       </Section>
@@ -38,15 +38,15 @@ const ContactPage = () => {
       <Section
         topSpaceLg="70"
         topSpaceMd="110"
-        bottomSpaceLg="80"
-        bottomSpaceMd="120"
+        bottomSpaceLg="20"
+        bottomSpaceMd="20"
       >
         <ContactSection reverseOrder={true} data={contactData} />
       </Section>
 
-      <Section bottomSpaceLg="0" bottomSpaceMd="0">
+      {/* <Section bottomSpaceLg="0" bottomSpaceMd="0">
         <LocationMap mapSrc={mapData.mapSrc} />
-      </Section>
+      </Section> */}
     </>
   );
 };

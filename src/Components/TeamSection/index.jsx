@@ -64,12 +64,12 @@ const TeamSection = ({ data, bgColor, variant, hr }) => {
                           bgColor ? "cs_blue_bg" : "cs_accent_bg "
                         }`}
                       />
-                      <Link to={item.link} className="cs_team_thumbnail">
+                      <p  className="cs_team_thumbnail">
                         <img src={item.imageUrl} alt="Team Thumbnail" />
-                      </Link>
+                      </p>
                       <div className="cs_team_bio">
                         <h3 className="cs_team_title cs_extra_bold mb-0">
-                          <Link to={item.link}>{item.name}</Link>
+                          <Link >{item.name}</Link>
                         </h3>
                         <p className="cs_team_subtitle">{item.review}</p>
                       </div>

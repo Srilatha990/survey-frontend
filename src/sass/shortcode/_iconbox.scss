@@ -12,7 +12,7 @@
   }
 
   .cs_iconbox_icon {
-    box-shadow: 0px 0px 49px rgba(18, 30, 59, 0.14);
+    // box-shadow: 0px 0px 49px rgba(18, 30, 59, 0.14);
     height: 58px;
     width: 58px;
     border-radius: 50%;
@@ -33,15 +33,15 @@
     max-width: 250px;
   }
 
-  &:hover {
-    .cs_iconbox_icon {
-      background-color: var(--blue-color);
+  // &:hover {
+  //   .cs_iconbox_icon {
+  //     background-color: var(--blue-color);
 
-      img {
-        filter: brightness(0) invert(1);
-      }
-    }
-  }
+  //     img {
+  //       filter: brightness(0) invert(1);
+  //     }
+  //   }
+  // }
 }
 
 .cs_iconbox.cs_style_2 {
@@ -82,8 +82,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      background-color: var(--blue-color);
-      filter: drop-shadow(0px 0px 49px rgba(49, 82, 157, 0.14));
+      // background-color: var(--blue-color);
+      // filter: drop-shadow(0px 0px 49px rgba(49, 82, 157, 0.14));
       border-radius: 50%;
       z-index: 1;
       transition: all 0.4s ease;
@@ -97,7 +97,7 @@
       top: 50%;
       right: -4px;
       transform: translateY(-50%) rotate(45deg);
-      background-color: var(--accent-color);
+      // background-color: var(--accent-color);
       z-index: 0;
       transition: all 0.4s ease;
     }
@@ -143,7 +143,7 @@
   .cs_iconbox_shape {
     width: 56px;
     height: 56px;
-    background-color: var(--accent-color);
+    // background-color: var(--accent-color);
     border-radius: 50%;
     position: absolute;
     bottom: -56px;
@@ -157,13 +157,13 @@
       opacity: 1;
     }
 
-    .cs_iconbox_icon::before {
-      background-color: var(--accent-color);
-    }
+    // .cs_iconbox_icon::before {
+    //   background-color: var(--accent-color);
+    // }
 
-    .cs_iconbox_icon::after {
-      background-color: var(--white);
-    }
+    // .cs_iconbox_icon::after {
+    //   background-color: var(--white);
+    // }
 
     .cs_iconbox_title a,
     .cs_iconbox_subtitle {
@@ -271,21 +271,21 @@
     margin-bottom: 0;
   }
 
-  &:hover {
-    .cs_iconbox_icon {
-      &::before {
-        background-color: var(--blue-color);
-      }
+  // &:hover {
+  //   .cs_iconbox_icon {
+  //     &::before {
+  //       background-color: var(--blue-color);
+  //     }
 
-      &::after {
-        transform: translate(-50%, 5px) rotate(45deg);
-      }
+  //     &::after {
+  //       transform: translate(-50%, 5px) rotate(45deg);
+  //     }
 
-      img {
-        filter: brightness(0) invert(1);
-      }
-    }
-  }
+  //     img {
+  //       filter: brightness(0) invert(1);
+  //     }
+  //   }
+  // }
 }
 
 .cs_iconbox_4_wrap {
@@ -329,7 +329,7 @@
     width: 110px;
     padding: 20px;
     border-radius: 5px;
-    background-color: var(--blue-color);
+    // background-color: var(--blue-color);
     transition: all 0.3s ease;
 
     @media (max-width: 1199px) {
@@ -366,9 +366,9 @@
   &:hover {
     background-color: var(--blue-color);
 
-    .cs_iconbox_icon {
-      background-color: var(--accent-color);
-    }
+    // .cs_iconbox_icon {
+    //   background-color: var(--accent-color);
+    // }
 
     .cs_btn.cs_style_1 {
       background-color: #fff;

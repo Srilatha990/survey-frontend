@@ -165,7 +165,7 @@ const serviceData = {
   footerIcon: '/assets/img/icons/service_footer_icon_1.png',
   footerText:
     'If you want to earn more and unlock additional opportunities',
-  footerLink: '/',
+  footerLink: '/join',
   footerLinkText: 'JOIN NOW',
 };
 
@@ -432,7 +432,7 @@ const medicalTabsData = {
     {
       id: 'brain_althim',
       imageSrc: 'assets/img/surveys.jpg',
-      title: 'We are here to hear and heal your',
+      title: 'Understanding Surveys: A Powerful Tool for Insights',
       subtitle:
         'Surveys are quick questionnaires designed to gather opinions and insights on various topics. By participating, you share your valuable feedback with companies and organizations. In return, you earn rewards or money for your time and effort.',
       points: [
@@ -445,7 +445,7 @@ const medicalTabsData = {
           text: 'Earning Potential: Each survey completed brings you closer to earning extra income from the comfort of your home.',
         },
       ],
-      linkHref: '/contact',
+      linkHref: '/about',
       buttonText: 'Read More',
     },
     {

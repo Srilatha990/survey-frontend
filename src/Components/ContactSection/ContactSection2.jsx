@@ -1,58 +1,422 @@
-import { useEffect } from "react";
-import loadBackgroudImages from "../Common/loadBackgroudImages";
 
-const ContactSection2 = () => {
 
-    useEffect(() => {
-        loadBackgroudImages();
-      }, []);
 
-    return (
-        <section className="cs_card cs_style_3 cs_gray_bg position-relative mb-5">
-        <div className="cs_height_110 cs_height_lg_70"></div>
-        <div className="container">
-          <div className="row cs_gap_y_40">
-            <div className="col-lg-6">
-            <div className="cs_section_heading cs_style_1">
-              <p className="cs_section_subtitle cs_accent_color">
-                <span className="cs_shape_left"></span>CONTACT US
-              </p>
-              <h2 className="cs_section_title">Reach out to us for any questions, feedback, or support.</h2>
-            </div>
-            <div className="cs_height_25 cs_height_lg_25"></div>
-            <form className="cs_contact_form row cs_gap_y_30 home_form_area">
-              <div className="col-md-6">
-                <input type="text" name="name" className="cs_form_field" placeholder="Your name" />
-              </div>
-              <div className="col-md-6">
-                <input type="email" name="email" className="cs_form_field" placeholder="Your email" />
-              </div>
-              <div className="col-md-6">
-                <input type="text" name="subject" className="cs_form_field" placeholder="Your Subject" />
-              </div>
-              <div className="col-md-6">
-                <input type="text" name="phone" className="cs_form_field" placeholder="Your phone" />
-              </div>
-              <div className="col-lg-12">
-                <textarea rows="5" name="message" className="cs_form_field" placeholder="Your comments"></textarea>
-              </div>
-              <div className="col-lg-12">
-                <button type="submit" className="cs_btn cs_style_1 cs_color_1">Send Request</button>
-              </div>
-            </form>
-            </div>
-            <div className="col-lg-6">
-              <div className="cs_solution_thumbnail cs_bg_filed" data-background="assets/img/cont.jpeg" >
-              </div>
-            </div>
+
+
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import axios from 'axios'; // Import axios for HTTP requests
+// import { ToastContainer, toast } from 'react-toastify'; // Correct named import
+// import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
+
+// const Contact = () => {
+//   const [formData, setFormData] = useState({
+//     fullName: '',
+//     email: '',
+//     subject: '',
+//     message: ''
+//   });
+
+  
+
+//   // Handle form field changes
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({ ...formData, [name]: value });
+//   };
+
+//   // Handle form submission
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+
+//     // Client-side validation
+//     if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
+//       toast.error('All fields are required.'); // Show error toast
+//       return;
+//     }
+
+//     try {
+//       const response = await axios.post('https://survey-backend-henna.vercel.app/api/contact/contact', formData); // Make POST request to backend
+//       if (response.status === 200) {
+//         toast.success('Message sent successfully.'); // Show success toast
+//         setFormData({ fullName: '', email: '', subject: '', message: '' }); // Clear form
+//       }
+//     } catch (error) {
+//       toast.error('An error occurred. Please try again.'); // Show error toast
+//     }
+//   };
+
+//   return (
+//     <div style={{
+//       display: 'flex',
+//       justifyContent: 'space-between',
+//       alignItems: 'stretch',
+//       padding: '40px',
+//       backgroundColor: '#f8f9fa',
+//       minHeight: '500px' // Ensuring the container has a minimum height
+//     }}>
+//       {/* Form Section */}
+//       <div style={{
+//         width: '48%',
+//         backgroundColor: '#ffffff',
+//         borderRadius: '15px',
+//         padding: '20px',
+//         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+//         display: 'flex',
+//         flexDirection: 'column',
+//         justifyContent: 'space-between',
+//         minHeight: '500px', // Ensuring the form has a consistent height
+//       }}>
+//         <h1 style={{
+//           fontSize: '2.5rem',
+//           fontWeight: '600',
+//           color: '#002261',
+//           textTransform: 'uppercase',
+//           letterSpacing: '1px',
+//           marginBottom: '30px'
+//         }}>
+//           Send Us a Message
+//         </h1>
+
+//         <form onSubmit={handleSubmit} style={{
+//           display: 'flex',
+//           flexDirection: 'column',
+//           flexGrow: 1,
+//           justifyContent: 'space-between',
+//         }}>
+//           <div style={{ marginBottom: '15px' }}>
+//             <label htmlFor="fullName" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Full Name</label>
+//             <input
+//               type="text"
+//               id="fullName"
+//               name="fullName"
+//               value={formData.fullName}
+//               onChange={handleChange}
+//               style={{
+//                 width: '100%',
+//                 padding: '8px',
+//                 fontSize: '0.9rem',
+//                 border: '1px solid #ddd',
+//                 borderRadius: '8px',
+//                 marginTop: '5px',
+//                 height: '35px', // Reduced height for input fields
+//               }}
+//               required
+//             />
+//           </div>
+
+//           <div style={{ marginBottom: '15px' }}>
+//             <label htmlFor="email" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Email Address</label>
+//             <input
+//               type="email"
+//               id="email"
+//               name="email"
+//               value={formData.email}
+//               onChange={handleChange}
+//               style={{
+//                 width: '100%',
+//                 padding: '8px',
+//                 fontSize: '0.9rem',
+//                 border: '1px solid #ddd',
+//                 borderRadius: '8px',
+//                 marginTop: '5px',
+//                 height: '35px', // Reduced height for input fields
+//               }}
+//               required
+//             />
+//           </div>
+
+//           <div style={{ marginBottom: '15px' }}>
+//             <label htmlFor="subject" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Subject</label>
+//             <input
+//               type="text"
+//               id="subject"
+//               name="subject"
+//               value={formData.subject}
+//               onChange={handleChange}
+//               style={{
+//                 width: '100%',
+//                 padding: '8px',
+//                 fontSize: '0.9rem',
+//                 border: '1px solid #ddd',
+//                 borderRadius: '8px',
+//                 marginTop: '5px',
+//                 height: '35px', // Reduced height for input fields
+//               }}
+//               required
+//             />
+//           </div>
+
+//           <div style={{ marginBottom: '15px' }}>
+//             <label htmlFor="message" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Message</label>
+//             <textarea
+//               id="message"
+//               name="message"
+//               value={formData.message}
+//               onChange={handleChange}
+//               style={{
+//                 width: '100%',
+//                 padding: '8px',
+//                 fontSize: '0.9rem',
+//                 border: '1px solid #ddd',
+//                 borderRadius: '8px',
+//                 marginTop: '5px',
+//                 height: '90px', // Adjusted height for the message area
+//               }}
+//               required
+//             />
+//           </div>
+
+//           <button type="submit" style={{
+//             width: '100%',
+//             padding: '10px',
+//             fontSize: '1.2rem',
+//             fontWeight: 'bold',
+//             color: 'white',
+//             backgroundColor: '#2ea6f7',
+//             border: 'none',
+//             borderRadius: '8px',
+//             transition: 'background-color 0.3s ease',
+//             marginTop: '20px', // Ensure space between button and fields
+//             height: '45px', // Set a specific height for the button to prevent overflow
+//           }}>
+//             Submit
+//           </button>
+//         </form>
+//       </div>
+
+//       {/* Right side image */}
+//       <div style={{
+//         width: '48%',
+//         height: '500px', // Ensuring the image has the same height as the form
+//         display: 'flex',
+//         justifyContent: 'center',
+//         alignItems: 'center',
+//       }}>
+//         <img src="/assets/img/cont.jpeg" alt="Contact Us" style={{
+//           width: '100%',
+//           height: '100%',
+//           borderRadius: '15px',
+//           boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+//           objectFit: 'cover', // Ensures image maintains its aspect ratio
+//         }} />
+//       </div>
+
+//       {/* Toast container for displaying toasts */}
+//       <ToastContainer />
+//     </div>
+//   );
+// };
+
+// export default Contact;
+
+
+
+import React, { useState } from 'react';
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+
+  // Handle form field changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Client-side validation
+    if (!formData.fullName || !formData.email || !formData.subject || !formData.message) {
+      toast.error('All fields are required.');
+      return;
+    }
+
+    try {
+      const response = await axios.post('https://survey-backend-henna.vercel.app/api/contact/contact', formData);
+      if (response.status === 200) {
+        toast.success('Message sent successfully.');
+        setFormData({ fullName: '', email: '', subject: '', message: '' });
+      }
+    } catch (error) {
+      toast.error('An error occurred. Please try again.');
+    }
+  };
+
+  return (
+    <div style={{
+      display: 'flex',
+      flexDirection: window.innerWidth < 768 ? 'column' : 'row',  // Stack vertically for mobile
+      padding: '20px',
+      backgroundColor: '#f8f9fa',
+      minHeight: '500px',
+    }}>
+      {/* Form Section */}
+      <div style={{
+        backgroundColor: '#ffffff',
+        borderRadius: '15px',
+        padding: '20px',
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '500px',
+        marginBottom: window.innerWidth < 768 ? '20px' : '0', // Margin for mobile
+        width: window.innerWidth < 768 ? '100%' : '50%', // 100% width on mobile, 50% on large screens
+      }}>
+        <h1 style={{
+          fontSize: '2rem',
+          fontWeight: '600',
+          color: '#002261',
+          textTransform: 'uppercase',
+          letterSpacing: '1px',
+          marginBottom: '30px',
+        }}>
+          Send Us a Message
+        </h1>
+
+        <form onSubmit={handleSubmit} style={{
+          display: 'flex',
+          flexDirection: 'column',
+          flexGrow: 1,
+          justifyContent: 'space-between',
+        }}>
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="fullName" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Full Name</label>
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              value={formData.fullName}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
           </div>
-        </div>
-        {/* <div className="cs_solution_shape position-absolute">
-          <img src="/assets/img/stethoscope.png" alt="Shape" />
-        </div> */}
-        {/* <div className="cs_height_120 cs_height_lg_80"></div> */}
-      </section>
-    );
+
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="email" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="subject" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              value={formData.subject}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '35px',
+              }}
+              required
+            />
+          </div>
+
+          <div style={{ marginBottom: '15px' }}>
+            <label htmlFor="message" style={{ fontSize: '1.1rem', color: '#333', fontWeight: '600', display: 'block' }}>Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              style={{
+                width: '100%',
+                padding: '8px',
+                fontSize: '0.9rem',
+                border: '1px solid #ddd',
+                borderRadius: '8px',
+                marginTop: '5px',
+                height: '90px',
+              }}
+              required
+            />
+          </div>
+
+          <button type="submit" style={{
+            width: '100%',
+            padding: '10px',
+            fontSize: '1.2rem',
+            fontWeight: 'bold',
+            color: 'white',
+            backgroundColor: '#2ea6f7',
+            border: 'none',
+            borderRadius: '8px',
+            transition: 'background-color 0.3s ease',
+            marginTop: '20px',
+            height: '45px',
+          }}>
+            Submit
+          </button>
+        </form>
+      </div>
+
+      {/* Right side image */}
+      <div style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '500px',
+        width: window.innerWidth < 768 ? '100%' : '50%',  // 100% on mobile, 50% on large screens
+      }}>
+        <img src="/assets/img/cont.jpeg" alt="Contact Us" style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '15px',
+          boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+          objectFit: 'cover',
+        }} />
+      </div>
+
+      {/* Toast container for displaying toasts */}
+      <ToastContainer />
+    </div>
+  );
 };
 
-export default ContactSection2;
+export default Contact;
+
+
