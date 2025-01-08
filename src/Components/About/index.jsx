@@ -190,9 +190,9 @@ const About = ({ data }) => {
                   <span className="cs_player_btn cs_center">
                     <span />
                   </span>
-                  <span className="cs_about_play_btn_text">
+                  {/* <span className="cs_about_play_btn_text">
                     {data.videoText}
-                  </span>
+                  </span> */}
                 </Link>
               </div>
               <div className="cs_about_thumb_2">
